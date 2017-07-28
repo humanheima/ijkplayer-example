@@ -45,9 +45,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import tv.danmaku.ijk.media.example.R;
+import tv.danmaku.ijk.media.example.application.Settings;
+import tv.danmaku.ijk.media.example.services.MediaPlayerService;
 import tv.danmaku.ijk.media.exo.IjkExoMediaPlayer;
 import tv.danmaku.ijk.media.player.AndroidMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
@@ -58,9 +59,6 @@ import tv.danmaku.ijk.media.player.misc.IMediaDataSource;
 import tv.danmaku.ijk.media.player.misc.IMediaFormat;
 import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 import tv.danmaku.ijk.media.player.misc.IjkMediaFormat;
-import tv.danmaku.ijk.media.example.R;
-import tv.danmaku.ijk.media.example.application.Settings;
-import tv.danmaku.ijk.media.example.services.MediaPlayerService;
 
 public class IjkVideoView extends FrameLayout implements MediaController.MediaPlayerControl {
     private String TAG = "IjkVideoView";
@@ -150,11 +148,6 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         initVideoView(context);
     }
 
-    // REMOVED: onMeasure
-    // REMOVED: onInitializeAccessibilityEvent
-    // REMOVED: onInitializeAccessibilityNodeInfo
-    // REMOVED: resolveAdjustedSize
-
     private void initVideoView(Context context) {
         mAppContext = context.getApplicationContext();
         mSettings = new Settings(mAppContext);
@@ -164,12 +157,9 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
 
         mVideoWidth = 0;
         mVideoHeight = 0;
-        // REMOVED: getHolder().addCallback(mSHCallback);
-        // REMOVED: getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         setFocusable(true);
         setFocusableInTouchMode(true);
         requestFocus();
-        // REMOVED: mPendingSubtitleTracks = new Vector<Pair<InputStream, MediaFormat>>();
         mCurrentState = STATE_IDLE;
         mTargetState = STATE_IDLE;
 
@@ -338,7 +328,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                     (TextUtils.isEmpty(scheme) || scheme.equalsIgnoreCase("file"))) {
                 IMediaDataSource dataSource = new FileMediaDataSource(new File(mUri.toString()));
                 mMediaPlayer.setDataSource(dataSource);
-            }  else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 mMediaPlayer.setDataSource(mAppContext, mUri, mHeaders);
             } else {
                 mMediaPlayer.setDataSource(mUri.toString());
@@ -917,6 +907,11 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
     private int mCurrentAspectRatioIndex = 0;
     private int mCurrentAspectRatio = s_allAspectRatio[0];
 
+    /**
+     * 切换视频播放的比例
+     *
+     * @return 当前的视频比例
+     */
     public int toggleAspectRatio() {
         mCurrentAspectRatioIndex++;
         mCurrentAspectRatioIndex %= s_allAspectRatio.length;
