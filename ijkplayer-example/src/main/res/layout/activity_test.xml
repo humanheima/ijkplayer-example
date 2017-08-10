@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <tv.danmaku.ijk.media.example.widget.media.TestVideoView
+            android:id="@+id/ijk_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

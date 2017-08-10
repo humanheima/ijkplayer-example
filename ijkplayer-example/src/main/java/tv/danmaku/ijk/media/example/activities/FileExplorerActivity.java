@@ -17,6 +17,8 @@
 
 package tv.danmaku.ijk.media.example.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -35,6 +37,11 @@ import tv.danmaku.ijk.media.example.fragments.FileListFragment;
 
 public class FileExplorerActivity extends AppActivity {
     private Settings mSettings;
+
+    public static void launch(Context context) {
+        Intent starter = new Intent(context, FileExplorerActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

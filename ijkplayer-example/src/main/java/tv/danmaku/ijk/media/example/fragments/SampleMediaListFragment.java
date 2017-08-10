@@ -68,6 +68,7 @@ public class SampleMediaListFragment extends Fragment {
             }
         });
 
+        mAdapter.addItem("http://domhttp.kksmg.com/2017/05/09/h264_450k_mp4_7f122c71a65219094da3907cbb01e14f_ncm.mp4", "bipbop basic master playlist");
         mAdapter.addItem("http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8", "bipbop basic master playlist");
         mAdapter.addItem("http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear1/prog_index.m3u8", "bipbop basic 400x300 @ 232 kbps");
         mAdapter.addItem("http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8", "bipbop basic 640x480 @ 650 kbps");
